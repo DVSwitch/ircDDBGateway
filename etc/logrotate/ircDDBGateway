@@ -1,5 +1,18 @@
 /var/log/ircddbgateway/ircDDBGateway.log
 {
+        firstaction
+                # $1 = the full path to the log file is passed to this script
+                # The path contains ".log" and a trailing space, so strip it.
+                parameter=$1
+                parameter="${parameter%%.*}"
+                today=$(date +"%Y-%m-%d")
+                filename=$parameter-$today.log
+                # echo $filename >/tmp/out.txt
+                if [ -f "$filename" ]; then
+                mv $filename $1
+                fi
+        endscript
+
         daily
         rotate 7
         maxage 7
@@ -8,14 +21,5 @@
         extension .log
         ifempty
         create
-
-        firstaction
-        today=$(date +"%Y-%m-%d")
-        filename="/var/log/ircddbgateway/ircDDBGateway-$today.log"
-        if [ -f "$filename" ]; then
-                mv /var/log/ircddbgateway/ircDDBGateway-$today.log /var/log/ircddbgateway/ircDDBGateway.log
-        fi
-        endscript
-
 }
  

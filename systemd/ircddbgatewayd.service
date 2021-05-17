@@ -21,9 +21,4 @@ KillMode=process
 WantedBy=multi-user.target
 
 # Usage: ircddbgatewayd [-nolog] [-debug] [-daemon] [-logdir <str>] [-confdir <str>] [Gateway Name]
-#  -nolog
-#  -debug
-#  -daemon
-#  -logdir:<str>
-#  -confdir:<str>	
 
